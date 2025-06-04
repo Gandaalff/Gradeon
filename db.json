@@ -1,0 +1,16 @@
+{
+  "grades": [
+    {
+      "id": "17c2",
+      "descriptiveGrade": null,
+      "minPercentage": 10,
+      "symbolicGrade": "1asda"
+    },
+    {
+      "id": "0db1",
+      "descriptiveGrade": null,
+      "minPercentage": 40,
+      "symbolicGrade": "rasd"
+    }
+  ]
+}

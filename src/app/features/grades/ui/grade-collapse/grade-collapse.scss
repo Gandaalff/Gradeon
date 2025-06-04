@@ -1,0 +1,26 @@
+@use "variable" as *;
+
+.grade-collapse-container {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  mat-accordion {
+    flex: 1;
+  }
+
+  .mat-mdc-card-header,
+  mat-panel-desciption {
+    padding: 1px;
+  }
+  .delete-icon-container {
+    margin-left: 15px;
+  }
+}
+
+@media (max-width: $phone-small-scren-width) {
+  .grade-collapse-container {
+    .delete-icon-container {
+      margin-left: 0;
+    }
+  }
+}

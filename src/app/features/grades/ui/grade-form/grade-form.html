@@ -1,0 +1,53 @@
+<form [formGroup]="gradeForm()" class="grade-form " [ngClass]="{ 'edit-form': !isModalForm() }" (ngSubmit)="save.emit()">
+  <div class="basic-grade-data-inputs" [ngClass]="{ 'narrow': isModalForm() }">
+    <mat-form-field>
+      <mat-label>Symbolic grade</mat-label>
+      <input
+        matInput
+        formControlName="symbolicGrade"
+        placeholder="Enter symbolic grade"
+        required
+      />
+      @if (gradeForm().get('symbolicGrade')?.invalid &&
+      gradeForm().get('symbolicGrade')?.touched) {
+      <mat-error>{{requireError}}</mat-error>
+      }
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Minimum percentage</mat-label>
+      <input
+        type="number"
+        matInput
+        formControlName="minPercentage"
+        placeholder="Enter min percentage"
+        required
+      />
+      @if(gradeForm().get('minPercentage')?.hasError('required') ) {
+      <mat-error>{{requireError}}</mat-error>
+      } @if(gradeForm().get('minPercentage')?.hasError('min') ) {
+      <mat-error>{{minError}}</mat-error>
+      } @if(gradeForm().get('minPercentage')?.hasError('max') ) {
+      <mat-error>{{maxError}}</mat-error>
+      }
+    </mat-form-field>
+    @if(!isModalForm()) {
+    <mat-form-field>
+      <mat-label>Maximum percentage</mat-label>
+      <input matInput formControlName="maxPercentage" [readonly]="true" />
+    </mat-form-field>
+    }
+  </div>
+  <mat-form-field>
+    <mat-label>Grade description</mat-label>
+    <textarea
+      matInput
+      placeholder="Enter grade description"
+      formControlName="descriptiveGrade"
+    ></textarea>
+  </mat-form-field>
+  @if(showButton()) {
+  <div class="button-container">
+    <button matButton="filled">Save</button>
+  </div>
+  }
+</form>

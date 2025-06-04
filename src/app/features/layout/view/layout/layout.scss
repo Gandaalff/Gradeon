@@ -1,0 +1,30 @@
+@use "variable" as *;
+
+.layout-container {
+  position: relative;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+
+  .layout-main {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    .layout-content {
+      flex: 1;
+      padding: 50px;
+      background-color: rgb(245, 245, 245);
+    }
+  }
+}
+
+@media (max-width: $phone-medium-scren-width) {
+  .layout-container .layout-main {
+    .layout-content {
+      padding: 10px;
+    }
+  }
+}

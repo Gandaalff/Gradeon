@@ -1,0 +1,19 @@
+<mat-card appearance="outlined">
+  <mat-card-header>
+    <div class="card-title-container">
+      <div class="card-title">Grades list</div>
+      <button matIconButton (click)="addGrade()">
+        <mat-icon>add</mat-icon>
+      </button>
+    </div>
+  </mat-card-header>
+  <mat-card-content>
+    @for(gradeData of gradeDataList(); track gradeData.id) {
+    <pr-grade-collapse
+      [gradeData]="gradeData"
+      (reloadList)="gradeResource.reload()"
+      (editGradeEmitter)="editGrade($event)"
+    ></pr-grade-collapse>
+    }
+  </mat-card-content>
+</mat-card>

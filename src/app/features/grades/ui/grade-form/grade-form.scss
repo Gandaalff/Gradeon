@@ -1,0 +1,43 @@
+@use "variable" as *;
+
+.grade-form {
+  display: flex;
+  flex-direction: column;
+  .basic-grade-data-inputs {
+    display: flex;
+    justify-content: space-between;
+    gap: 15px;
+    mat-form-field {
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    &.narrow {
+      flex-direction: column;
+    }
+  }
+
+  .button-container {
+    button {
+      float: right;
+    }
+  }
+}
+
+@media (max-width: $tablet-screen-width) {
+  .basic-grade-data-inputs {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: $phone-small-scren-width) {
+  .edit-form {
+    mat-form-field {
+      max-width: 180px;
+      font-size: 14px;
+    }
+
+    mat-label {
+      font-size: 14px;
+    }
+  }
+}

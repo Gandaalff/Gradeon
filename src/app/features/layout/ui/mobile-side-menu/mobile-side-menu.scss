@@ -1,0 +1,74 @@
+@use "variable" as *;
+
+.side-menu-container {
+  transition: transform 0.5s ease, opacity 0.5s ease;
+  transform: translateX(0);
+  opacity: 1;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: rgba(128, 128, 128, 0.5);
+  z-index: 1;
+  &.collapsed {
+    transform: translateX(-100%);
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  mat-drawer {
+    background-color: #ffecf0;
+    width: 100%;
+    border-radius: 0;
+    transition: width 0.3s ease;
+
+    ::ng-deep .mat-drawer-inner-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+  }
+
+  .mat-drawer-container {
+    height: 100vh;
+    width: 180px;
+    border-right: 0.1px solid #e3dddd;
+    transition: width 2s ease;
+
+    .menu {
+      mat-list-item {
+        border-radius: 0;
+      }
+
+      .menu-item {
+        font-size: 18px;
+        display: flex;
+        align-items: center;
+        border-radius: 5px;
+
+        span {
+          margin-left: 20px;
+          font-weight: 500;
+          display: inline-block;
+        }
+
+        mat-icon {
+          font-size: 25px;
+        }
+      }
+    }
+
+    .button-container {
+      display: flex;
+      justify-content: end;
+      margin: 15px;
+    }
+  }
+}
+
+@media (min-width: $phone-screen-width) {
+  .side-menu-container {
+    display: none;
+  }
+}
