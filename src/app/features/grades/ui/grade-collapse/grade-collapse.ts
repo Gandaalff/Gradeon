@@ -14,7 +14,7 @@ import { SUCCESS_DELETE_GRADE, DEFAULT_SNACK_BAR_ACTION_LABEL, ERROR_DELETE_GRAD
 
 @Component({
   selector: 'pr-grade-collapse',
-  imports: [MatExpansionModule, MatIcon, ReactiveFormsModule, MatInputModule, MatButtonModule, GradeForm],
+  imports: [GradeForm, MatButtonModule, MatExpansionModule, MatIcon, MatInputModule, ReactiveFormsModule],
   templateUrl: './grade-collapse.html',
   styleUrl: './grade-collapse.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

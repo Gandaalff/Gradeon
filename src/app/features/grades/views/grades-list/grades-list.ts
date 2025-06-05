@@ -9,11 +9,11 @@ import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { GradeAddModal } from '../../ui/grade-add-modal/grade-add-modal';
-import { DEFAULT_MODAL_WIDTH } from '../../../../core/ui/utilis/global-const.helper';
+import { DEFAULT_MODAL_WIDTH } from '../../../../core/utilis/global-const.helper';
 
 @Component({
   selector: 'pr-grades-list',
-  imports: [MatCard, MatCardHeader, MatCardContent, GradeCollapse, MatIcon, MatButtonModule],
+  imports: [GradeCollapse, MatButtonModule, MatCard, MatCardContent, MatCardHeader, MatIcon],
   templateUrl: './grades-list.html',
   styleUrl: './grades-list.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

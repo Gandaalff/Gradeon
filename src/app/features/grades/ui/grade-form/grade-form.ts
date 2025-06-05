@@ -12,20 +12,21 @@ import { MatInputModule } from '@angular/material/input';
 import { GradeBuilderForm } from '../../data-types/grade-form.interface';
 import { NgClass } from '@angular/common';
 import {
-  MAX_PERCENTAGE_VALUE,
-  MIN_PERCENTAGE_VALUE,
+
+  ERROR_MAX_PERCENTAGE_VALUE,
+  ERROR_MIN_PERCENTAGE_VALUE,
   REQUIRE_ERROR,
 } from '../../../../core/utilis/global-errors';
 
 @Component({
   selector: 'pr-grade-form',
   imports: [
+    MatButtonModule,
     MatExpansionModule,
-    ReactiveFormsModule,
     MatFormField,
     MatInputModule,
-    MatButtonModule,
     NgClass,
+    ReactiveFormsModule,
   ],
   templateUrl: './grade-form.html',
   styleUrl: './grade-form.scss',
@@ -37,6 +38,6 @@ export class GradeForm {
   public readonly isModalForm = input<boolean>(false);
   public readonly save = output();
   protected readonly requireError = REQUIRE_ERROR;
-  protected readonly minError = MIN_PERCENTAGE_VALUE;
-  protected readonly maxError = MAX_PERCENTAGE_VALUE;
+  protected readonly minError = ERROR_MIN_PERCENTAGE_VALUE;
+  protected readonly maxError = ERROR_MAX_PERCENTAGE_VALUE;
 }

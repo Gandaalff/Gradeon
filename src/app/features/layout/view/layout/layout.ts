@@ -6,7 +6,7 @@ import { MobileSideMenu } from '../../ui/mobile-side-menu/mobile-side-menu';
 
 @Component({
   selector: 'pr-layout',
-  imports: [Navbar, SideMenu, RouterOutlet, MobileSideMenu],
+  imports: [MobileSideMenu, Navbar, RouterOutlet, SideMenu],
   templateUrl: './layout.html',
   styleUrls: ['./layout.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

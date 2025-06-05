@@ -6,7 +6,7 @@ import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'pr-grade-add-modal',
-  imports: [MatDialogModule, GradeForm, MatButtonModule],
+  imports: [GradeForm, MatButtonModule, MatDialogModule],
   templateUrl: './grade-add-modal.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })

@@ -7,13 +7,14 @@ import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'pr-navbar',
-  imports: [MatToolbar, MatIcon, MatIconButton, MatMenuModule],
+  imports: [MatIcon, MatIconButton, MatMenuModule, MatToolbar],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Navbar {
   protected readonly menuCollapseService = inject(MenuCollapse);
+
   protected collapseMenu(): void {
     this.menuCollapseService.isMenuCollapsed.update(isCollapsed => {
       return !isCollapsed;

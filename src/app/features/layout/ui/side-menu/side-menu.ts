@@ -2,22 +2,23 @@ import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav';
 import { Logo } from '../../../../core/ui/logo/logo';
-import { LOGO_TYPE } from '../../../../core/ui/utilis/logo-type.helper';
 import { MatListItem, MatNavList } from '@angular/material/list';
 import { MenuCollapse } from '../../services/menu-collapse';
 import { NgClass } from '@angular/common';
 import { RouterLink } from '@angular/router';
 import { AbstractMenuListenRouterChanges } from '../../utilis/abstract-menu-listen-router-changes';
+import { MENU_CONFIG } from '../../utilis/menu-config.helper';
+import { LOGO_TYPE } from '../../../../core/utilis/logo-type.helper';
 
 @Component({
   selector: 'pr-side-menu',
   imports: [
+    Logo,
     MatDrawer,
     MatDrawerContainer,
     MatIcon,
-    Logo,
-    MatNavList,
     MatListItem,
+    MatNavList,
     NgClass,
     RouterLink,
   ],
@@ -28,16 +29,5 @@ import { AbstractMenuListenRouterChanges } from '../../utilis/abstract-menu-list
 export class SideMenu extends AbstractMenuListenRouterChanges {
   protected readonly menuCollapseService = inject(MenuCollapse);
   protected logoTypeEnum = LOGO_TYPE;
-  protected menuConfig = [
-    {
-      name: 'Home',
-      icon: 'home',
-      path: '/app/home',
-    },
-    {
-      name: 'Grades',
-      icon: 'leaderboard',
-      path: '/app/grades',
-    },
-  ];
+  protected menuConfig = MENU_CONFIG;
 }

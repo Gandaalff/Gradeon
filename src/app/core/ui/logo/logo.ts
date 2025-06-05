@@ -1,5 +1,5 @@
 import { Component, input } from '@angular/core';
-import { LOGO_TYPE } from '../utilis/logo-type.helper';
+import { LOGO_TYPE } from '../../utilis/logo-type.helper';
 
 @Component({
   selector: 'ws-logo',

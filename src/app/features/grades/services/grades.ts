@@ -34,15 +34,15 @@ export class Grades {
     },
   });
 
-  createGrade(grade: GradeDTO): Observable<GradeDTO> {
+  public createGrade(grade: GradeDTO): Observable<GradeDTO> {
     return this.http.post<GradeDTO>(this.mainUrl, grade);
   }
 
-  updateGrade(id: string, updates: Partial<GradeTSend>): Observable<GradeTSend> {
+  public updateGrade(id: string, updates: Partial<GradeTSend>): Observable<GradeTSend> {
     return this.http.patch<GradeTSend>(`${this.mainUrl}/${id}`, updates);
   }
 
-  deleteGrade(id: string): Observable<void> {
+  public deleteGrade(id: string): Observable<void> {
     return this.http.delete<void>(`${this.mainUrl}/${id}`);
   }
 }
