@@ -11,6 +11,7 @@ import { Grade, GradeTSend } from '../../data-types/grade.interface';
 import { GradeForm } from '../grade-form/grade-form';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { SUCCESS_DELETE_GRADE, DEFAULT_SNACK_BAR_ACTION_LABEL, ERROR_DELETE_GRADE } from '../../utilis/grade-notifications';
+import { DEFAULT_SNACK_BAR_DURATION } from '../../../../core/utilis/global-const.helper';
 
 @Component({
   selector: 'pr-grade-collapse',
@@ -47,10 +48,10 @@ export class GradeCollapse {
     this.gradesService.deleteGrade(this.gradeData().id).subscribe({
       next: () => {
         this.reloadList.emit();
-        this.snackBar.open(SUCCESS_DELETE_GRADE, DEFAULT_SNACK_BAR_ACTION_LABEL);
+        this.snackBar.open(SUCCESS_DELETE_GRADE, DEFAULT_SNACK_BAR_ACTION_LABEL, { duration: DEFAULT_SNACK_BAR_DURATION });
       },
       error: () => {
-        this.snackBar.open(ERROR_DELETE_GRADE, DEFAULT_SNACK_BAR_ACTION_LABEL);
+        this.snackBar.open(ERROR_DELETE_GRADE, DEFAULT_SNACK_BAR_ACTION_LABEL, { duration: DEFAULT_SNACK_BAR_DURATION });
       },
     });
   }

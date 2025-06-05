@@ -8,6 +8,7 @@ import {
   DEFAULT_SNACK_BAR_ACTION_LABEL,
   ERROR_LOAD_GRADE_LIST,
 } from '../utilis/grade-notifications';
+import { DEFAULT_SNACK_BAR_DURATION } from '../../../core/utilis/global-const.helper';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +27,7 @@ export class Grades {
         this.snackBar.open(
           ERROR_LOAD_GRADE_LIST,
           DEFAULT_SNACK_BAR_ACTION_LABEL
-        );
+        ,{ duration: DEFAULT_SNACK_BAR_DURATION });
         throw new Error('Failed to fetch users');
       }
       const grades = await response.json();

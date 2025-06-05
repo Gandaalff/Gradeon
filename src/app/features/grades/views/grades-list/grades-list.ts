@@ -9,7 +9,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { GradeAddModal } from '../../ui/grade-add-modal/grade-add-modal';
-import { DEFAULT_MODAL_WIDTH } from '../../../../core/utilis/global-const.helper';
+import { DEFAULT_MODAL_WIDTH, DEFAULT_SNACK_BAR_DURATION } from '../../../../core/utilis/global-const.helper';
 
 @Component({
   selector: 'pr-grades-list',
@@ -50,10 +50,10 @@ export default class GradesList {
       this.gradesService.updateGrade(gradeId, grade).subscribe({
         next: () => {
           this.reloadList();
-          this.snackBar.open(SUCCESS_EDIT_GRADE, DEFAULT_SNACK_BAR_ACTION_LABEL);
+          this.snackBar.open(SUCCESS_EDIT_GRADE, DEFAULT_SNACK_BAR_ACTION_LABEL, { duration: DEFAULT_SNACK_BAR_DURATION });
         },
         error: () => {
-          this.snackBar.open(ERROR_EDIT_GRADE, DEFAULT_SNACK_BAR_ACTION_LABEL);
+          this.snackBar.open(ERROR_EDIT_GRADE, DEFAULT_SNACK_BAR_ACTION_LABEL, { duration: DEFAULT_SNACK_BAR_DURATION });
         },
       });
     }
@@ -71,14 +71,14 @@ export default class GradesList {
           this.gradesService.createGrade(newGrade).subscribe({
             next: () => {
               this.reloadList();
-              this.snackBar.open(SUCCESS_EDIT_GRADE, DEFAULT_SNACK_BAR_ACTION_LABEL);
+              this.snackBar.open(SUCCESS_EDIT_GRADE, DEFAULT_SNACK_BAR_ACTION_LABEL, { duration: DEFAULT_SNACK_BAR_DURATION });
             },
             error: (err) => {
               const errorCode = err?.error?.errorCode;
               if (errorCode === this.createGradeDuplicateMinPercentageError) {
-                this.snackBar.open(CREATE_GRADE_CONFLICT_ERROR_AS014, DEFAULT_SNACK_BAR_ACTION_LABEL);
+                this.snackBar.open(CREATE_GRADE_CONFLICT_ERROR_AS014, DEFAULT_SNACK_BAR_ACTION_LABEL, { duration: DEFAULT_SNACK_BAR_DURATION });
               } else {
-                this.snackBar.open(ERROR_EDIT_GRADE, DEFAULT_SNACK_BAR_ACTION_LABEL);
+                this.snackBar.open(ERROR_EDIT_GRADE, DEFAULT_SNACK_BAR_ACTION_LABEL, { duration: DEFAULT_SNACK_BAR_DURATION });
               }
             },
           });
@@ -93,7 +93,7 @@ export default class GradesList {
     if (!sameMinPercentExist) {
       return true;
     } else {
-      this.snackBar.open(ERROR_GRADE_WITH_MIN_PROC_ALREADY_EXIST, DEFAULT_SNACK_BAR_ACTION_LABEL);
+      this.snackBar.open(ERROR_GRADE_WITH_MIN_PROC_ALREADY_EXIST, DEFAULT_SNACK_BAR_ACTION_LABEL, { duration: DEFAULT_SNACK_BAR_DURATION });
       return false;
     }
   }
