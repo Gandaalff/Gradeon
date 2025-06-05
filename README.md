@@ -22,21 +22,21 @@
 ## 🛠️ Installation & Setup
 
 1. **Clone the repository**
-  git clone <your-repo-link>
-  cd gradeon
+  ```git clone <your-repo-link>```
+  ```cd gradeon```
 
 2. **Install dependencies**
-  npm install
+  ```npm install```
 
 3. **Start the mock API (JSON Server)**
-  npx json-server --watch db.json --port 3000
+  ```npx json-server --watch db.json --port 3000```
 
 4. **Run the Angular application (in a separate terminal)**
-  npm run start
+  ```npm run start```
 The application will be available at: http://localhost:4200
 
 ## 🧪 Testing
 This project uses Playwright for end-to-end testing.
 
 **To run tests, use the following command:**
-  npx playwright test
+  ```npx playwright test```
