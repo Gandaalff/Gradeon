@@ -1,12 +1,15 @@
-@switch(logoType()) { @case(logoTypeEnum.BRAND_LOGO) {
-<div class="logo">
-  <img src="assets/img/brand-logo.svg" />
-</div>
-
-} @case(logoTypeEnum.BRAND_NAME) {
-<div class="logo-brand-name"><img src="assets/img/brand-name.svg" /></div>
-
-} @case(logoTypeEnum.BRAND_LOGO_WITH_NAME) {
-<img src="assets/img/brand-logo-with-name.svg" />
-
-} }
+@switch (logoType()) {
+  @case (logoTypeEnum.BRAND_LOGO) {
+    <div class="logo">
+      <img src="assets/img/brand-logo.svg" alt="Brand logo" />
+    </div>
+  }
+  @case (logoTypeEnum.BRAND_NAME) {
+    <div class="logo-brand-name">
+      <img src="assets/img/brand-name.svg" alt="Brand name" />
+    </div>
+  }
+  @case (logoTypeEnum.BRAND_LOGO_WITH_NAME) {
+    <img src="assets/img/brand-logo-with-name.svg" alt="Brand logo with name" />
+  }
+}

@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  DestroyRef,
-  inject,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { MatIcon } from '@angular/material/icon';
 import { MatDrawer, MatDrawerContainer } from '@angular/material/sidenav';
 import { Logo } from '../../../../core/ui/logo/logo';

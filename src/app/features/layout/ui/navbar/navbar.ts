@@ -15,7 +15,7 @@ import { MatMenuModule } from '@angular/material/menu';
 export class Navbar {
   protected readonly menuCollapseService = inject(MenuCollapse);
   protected collapseMenu(): void {
-    this.menuCollapseService.isMenuCollapsed.update((isCollapsed) => {
+    this.menuCollapseService.isMenuCollapsed.update(isCollapsed => {
       return !isCollapsed;
     });
   }

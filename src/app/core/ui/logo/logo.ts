@@ -3,7 +3,6 @@ import { LOGO_TYPE } from '../utilis/logo-type.helper';
 
 @Component({
   selector: 'ws-logo',
-  imports: [],
   templateUrl: './logo.html',
   styleUrl: './logo.scss',
 })

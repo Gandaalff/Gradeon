@@ -13,12 +13,10 @@ export abstract class AbstractMenuListenRouterChanges {
   }
 
   private listenOnRouteChanges(): void {
-    this.router.events
-      .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((event: any) => {
-        if (event instanceof NavigationEnd) {
-          this.activatedRoute.set(event.urlAfterRedirects);
-        }
-      });
+    this.router.events.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.activatedRoute.set(event.urlAfterRedirects);
+      }
+    });
   }
 }

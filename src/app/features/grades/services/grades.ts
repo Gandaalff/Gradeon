@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { inject, Injectable, resource } from '@angular/core';
 import { ENVIRONMENT } from '../../../../environtment/environtment';
 import { Observable } from 'rxjs';
-import { GradeDTO } from '../data-types/grade.interface';
+import { GradeDTO, GradeTSend } from '../data-types/grade.interface';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   DEFAULT_SNACK_BAR_ACTION_LABEL,
@@ -18,7 +18,7 @@ export class Grades {
   private mainUrl = ENVIRONMENT.url;
 
   public readonly gradesResourse = resource<GradeDTO[], void>({
-    loader: async (params) => {
+    loader: async params => {
       const response = await fetch(this.mainUrl, {
         signal: params.abortSignal,
       });
@@ -38,8 +38,8 @@ export class Grades {
     return this.http.post<GradeDTO>(this.mainUrl, grade);
   }
 
-  updateGrade(id: string, updates: Partial<any>): Observable<GradeDTO> {
-    return this.http.patch<GradeDTO>(`${this.mainUrl}/${id}`, updates);
+  updateGrade(id: string, updates: Partial<GradeTSend>): Observable<GradeTSend> {
+    return this.http.patch<GradeTSend>(`${this.mainUrl}/${id}`, updates);
   }
 
   deleteGrade(id: string): Observable<void> {

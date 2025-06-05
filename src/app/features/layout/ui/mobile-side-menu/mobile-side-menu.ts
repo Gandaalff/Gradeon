@@ -1,9 +1,4 @@
-import {
-  ChangeDetectionStrategy,
-  Component,
-  inject,
-  input,
-} from '@angular/core';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { AbstractMenuListenRouterChanges } from '../../utilis/abstract-menu-listen-router-changes';
 import { LOGO_TYPE } from '../../../../core/ui/utilis/logo-type.helper';
 import { MenuCollapse } from '../../services/menu-collapse';
