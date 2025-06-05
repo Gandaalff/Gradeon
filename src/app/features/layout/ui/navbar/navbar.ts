@@ -1,5 +1,5 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
-import { MatFabButton, MatIconButton } from '@angular/material/button';
+import { MatIconButton } from '@angular/material/button';
 import { MatIcon } from '@angular/material/icon';
 import { MatToolbar } from '@angular/material/toolbar';
 import { MenuCollapse } from '../../services/menu-collapse';
@@ -7,7 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 
 @Component({
   selector: 'pr-navbar',
-  imports: [MatToolbar, MatIcon, MatIconButton, MatFabButton, MatMenuModule],
+  imports: [MatToolbar, MatIcon, MatIconButton, MatMenuModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

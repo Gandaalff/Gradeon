@@ -3,20 +3,10 @@ import {
   Component,
   computed,
   inject,
-  OnInit,
-  resource,
 } from '@angular/core';
-import {
-  MatCard,
-  MatCardContent,
-  MatCardFooter,
-  MatCardHeader,
-  MatCardTitle,
-} from '@angular/material/card';
+import { MatCard, MatCardContent, MatCardHeader } from '@angular/material/card';
 import { GradeCollapse } from '../../ui/grade-collapse/grade-collapse';
 import { Grades } from '../../services/grades';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { JsonPipe } from '@angular/common';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import {
   CREATE_GRADE_CONFLICT_ERROR_AS014,
@@ -27,7 +17,7 @@ import {
 } from '../../utilis/grade-notifications';
 import { Grade, GradeTSend } from '../../data-types/grade.interface';
 import { MatIcon } from '@angular/material/icon';
-import { MatButton, MatButtonModule } from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialog } from '@angular/material/dialog';
 import { GradeAddModal } from '../../ui/grade-add-modal/grade-add-modal';
 import { DEFAULT_MODAL_WIDTH } from '../../../../core/ui/utilis/global-const.helper';
@@ -37,7 +27,6 @@ import { DEFAULT_MODAL_WIDTH } from '../../../../core/ui/utilis/global-const.hel
   imports: [
     MatCard,
     MatCardHeader,
-    MatCardTitle,
     MatCardContent,
     GradeCollapse,
     MatIcon,
@@ -49,10 +38,11 @@ import { DEFAULT_MODAL_WIDTH } from '../../../../core/ui/utilis/global-const.hel
 })
 export default class GradesList {
   private readonly gradesService = inject(Grades);
-  private snackBar = inject(MatSnackBar);
-  readonly dialog = inject(MatDialog);
+  private readonly snackBar = inject(MatSnackBar);
+  private readonly dialog = inject(MatDialog);
   protected readonly gradeResource = this.gradesService.gradesResourse;
   protected gradeDataList = computed<Grade[]>(() => {
+    if (!this.gradeResource.value()) return [];
     return this.gradeResource
       .value()
       ?.sort((a, b) => a.minPercentage - b.minPercentage)
@@ -96,33 +86,36 @@ export default class GradesList {
       width: DEFAULT_MODAL_WIDTH,
     });
     dialogRef.afterClosed().subscribe((newGrade) => {
-      const isGradeValid = this.validateMinPercentageValue(newGrade);
-      if (newGrade && isGradeValid) {
-        delete newGrade.id;
-        this.gradesService.createGrade(newGrade).subscribe({
-          next: () => {
-            this.reloadList();
-            this.snackBar.open(
-              SUCCESS_EDIT_GRADE,
-              DEFAULT_SNACK_BAR_ACTION_LABEL
-            );
-          },
-          error: (err) => {
-            const errorCode = err?.error?.errorCode;
-
-            if (errorCode === this.createGradeDuplicateMinPercentageError) {
+      if (newGrade) {
+        const isGradeValid = this.gradeResource.hasValue()
+          ? this.validateMinPercentageValue(newGrade)
+          : true;
+        if (isGradeValid) {
+          delete newGrade.id;
+          this.gradesService.createGrade(newGrade).subscribe({
+            next: () => {
+              this.reloadList();
               this.snackBar.open(
-                CREATE_GRADE_CONFLICT_ERROR_AS014,
+                SUCCESS_EDIT_GRADE,
                 DEFAULT_SNACK_BAR_ACTION_LABEL
               );
-            } else {
-              this.snackBar.open(
-                ERROR_EDIT_GRADE,
-                DEFAULT_SNACK_BAR_ACTION_LABEL
-              );
-            }
-          },
-        });
+            },
+            error: (err) => {
+              const errorCode = err?.error?.errorCode;
+              if (errorCode === this.createGradeDuplicateMinPercentageError) {
+                this.snackBar.open(
+                  CREATE_GRADE_CONFLICT_ERROR_AS014,
+                  DEFAULT_SNACK_BAR_ACTION_LABEL
+                );
+              } else {
+                this.snackBar.open(
+                  ERROR_EDIT_GRADE,
+                  DEFAULT_SNACK_BAR_ACTION_LABEL
+                );
+              }
+            },
+          });
+        }
       }
     });
   }

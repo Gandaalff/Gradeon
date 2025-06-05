@@ -8,12 +8,18 @@
     </div>
   </mat-card-header>
   <mat-card-content>
-    @for(gradeData of gradeDataList(); track gradeData.id) {
+    @if(gradeResource.hasValue()) { @for(gradeData of gradeDataList(); track
+    gradeData.id) {
     <pr-grade-collapse
       [gradeData]="gradeData"
       (reloadList)="gradeResource.reload()"
       (editGradeEmitter)="editGrade($event)"
     ></pr-grade-collapse>
+    } } @else {
+    <p>
+      It looks like you don't have any grades. You can add one at any time by
+      clicking the plus button.
+    </p>
     }
   </mat-card-content>
 </mat-card>

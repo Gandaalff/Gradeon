@@ -3,19 +3,30 @@ import { inject, Injectable, resource } from '@angular/core';
 import { ENVIRONMENT } from '../../../../environtment/environtment';
 import { Observable } from 'rxjs';
 import { GradeDTO } from '../data-types/grade.interface';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {
+  DEFAULT_SNACK_BAR_ACTION_LABEL,
+  ERROR_LOAD_GRADE_LIST,
+} from '../utilis/grade-notifications';
 
 @Injectable({
   providedIn: 'root',
 })
 export class Grades {
   private readonly http = inject(HttpClient);
+  private readonly snackBar = inject(MatSnackBar);
   private mainUrl = ENVIRONMENT.url;
 
   public readonly gradesResourse = resource<GradeDTO[], void>({
-    loader: async () => {
-      const response = await fetch(this.mainUrl);
+    loader: async (params) => {
+      const response = await fetch(this.mainUrl, {
+        signal: params.abortSignal,
+      });
       if (!response.ok) {
-        console.log(response);
+        this.snackBar.open(
+          ERROR_LOAD_GRADE_LIST,
+          DEFAULT_SNACK_BAR_ACTION_LABEL
+        );
         throw new Error('Failed to fetch users');
       }
       const grades = await response.json();

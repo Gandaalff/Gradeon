@@ -17,6 +17,12 @@ import { MatButtonModule } from '@angular/material/button';
 import { Grades } from '../../services/grades';
 import { Grade } from '../../data-types/grade.interface';
 import { GradeForm } from '../grade-form/grade-form';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import {
+  SUCCESS_DELETE_GRADE,
+  DEFAULT_SNACK_BAR_ACTION_LABEL,
+  ERROR_DELETE_GRADE,
+} from '../../utilis/grade-notifications';
 
 @Component({
   selector: 'pr-grade-collapse',
@@ -37,6 +43,7 @@ export class GradeCollapse {
   public readonly reloadList = output<void>();
   public readonly editGradeEmitter = output<any>();
   private readonly gradesService = inject(Grades);
+  private readonly snackBar = inject(MatSnackBar);
   protected readonly gradeForm = GradeBuilder.build();
   readonly panelOpenState = signal(false);
 
@@ -59,8 +66,14 @@ export class GradeCollapse {
     this.gradesService.deleteGrade(this.gradeData().id).subscribe({
       next: () => {
         this.reloadList.emit();
+        this.snackBar.open(
+          SUCCESS_DELETE_GRADE,
+          DEFAULT_SNACK_BAR_ACTION_LABEL
+        );
       },
-      error: () => {},
+      error: () => {
+        this.snackBar.open(ERROR_DELETE_GRADE, DEFAULT_SNACK_BAR_ACTION_LABEL);
+      },
     });
   }
 }

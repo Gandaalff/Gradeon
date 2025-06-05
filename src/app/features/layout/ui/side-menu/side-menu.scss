@@ -9,7 +9,7 @@
   }
 
   mat-drawer {
-    background-color: #ffecf0;
+    background-color: $color-pink-light;
     width: 100%;
     border-radius: 0;
     transition: width 0.3s ease;
@@ -33,14 +33,14 @@
       }
 
       .menu-item {
-        font-size: 18px;
+        font-size: $font-size-default;
         display: flex;
         align-items: center;
         border-radius: 5px;
 
         span {
           margin-left: 20px;
-          font-weight: 500;
+          font-weight: $font-weight-normal;
           white-space: nowrap;
           overflow: hidden;
           transition: opacity 0.2s ease, width 0.2s ease, margin 0.2s ease;
@@ -48,7 +48,7 @@
         }
 
         mat-icon {
-          font-size: 25px;
+          font-size: $font-icon-size;
         }
       }
     }

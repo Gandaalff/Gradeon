@@ -16,7 +16,7 @@
     .layout-content {
       flex: 1;
       padding: 50px;
-      background-color: rgb(245, 245, 245);
+      background-color: $color-background-light;
     }
   }
 }
@@ -24,7 +24,7 @@
 @media (max-width: $phone-medium-scren-width) {
   .layout-container .layout-main {
     .layout-content {
-      padding: 10px;
+      padding: $margin-small;
     }
   }
 }

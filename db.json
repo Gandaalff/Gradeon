@@ -1,16 +1,28 @@
 {
   "grades": [
     {
-      "id": "17c2",
+      "id": "8e4e",
       "descriptiveGrade": null,
-      "minPercentage": 10,
-      "symbolicGrade": "1asda"
+      "minPercentage": 30,
+      "symbolicGrade": "5sd"
     },
     {
-      "id": "0db1",
+      "id": "a5ac",
       "descriptiveGrade": null,
-      "minPercentage": 40,
-      "symbolicGrade": "rasd"
+      "minPercentage": 12,
+      "symbolicGrade": "test"
+    },
+    {
+      "id": "a4f1",
+      "descriptiveGrade": null,
+      "minPercentage": 1,
+      "symbolicGrade": "asd"
+    },
+    {
+      "id": "3e22",
+      "descriptiveGrade": null,
+      "minPercentage": 72,
+      "symbolicGrade": "JPT"
     }
   ]
 }

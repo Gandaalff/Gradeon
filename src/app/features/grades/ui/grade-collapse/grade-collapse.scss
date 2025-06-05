@@ -3,7 +3,7 @@
 .grade-collapse-container {
   display: flex;
   align-items: center;
-  margin: 20px 0;
+  margin: $margin-large 0;
   mat-accordion {
     flex: 1;
   }
@@ -13,7 +13,7 @@
     padding: 1px;
   }
   .delete-icon-container {
-    margin-left: 15px;
+    margin-left: $margin-medium;
   }
 }
 

@@ -8,7 +8,7 @@
   position: absolute;
   left: 0;
   top: 0;
-  background-color: rgba(128, 128, 128, 0.5);
+  background-color: $color-gray-overlay;
   z-index: 1;
   &.collapsed {
     transform: translateX(-100%);
@@ -17,7 +17,7 @@
   }
 
   mat-drawer {
-    background-color: #ffecf0;
+    background-color: $color-pink-light;
     width: 100%;
     border-radius: 0;
     transition: width 0.3s ease;
@@ -42,19 +42,19 @@
       }
 
       .menu-item {
-        font-size: 18px;
+        font-size: $font-size-default;
         display: flex;
         align-items: center;
         border-radius: 5px;
 
         span {
           margin-left: 20px;
-          font-weight: 500;
+          font-weight: $font-weight-normal;
           display: inline-block;
         }
 
         mat-icon {
-          font-size: 25px;
+          font-size: $font-icon-size;
         }
       }
     }
