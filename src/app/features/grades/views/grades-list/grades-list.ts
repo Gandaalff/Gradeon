@@ -45,8 +45,9 @@ export default class GradesList {
   protected editGrade(grade: Partial<GradeTSend>): void {
     console.log(grade);
     const gradeId = grade.id;
+    const isEditedGradeValid = this.validateEditMinPercentageValue(grade)
     delete grade.id;
-    if (gradeId) {
+    if (gradeId && isEditedGradeValid) {
       this.gradesService.updateGrade(gradeId, grade).subscribe({
         next: () => {
           this.reloadList();
@@ -94,6 +95,21 @@ export default class GradesList {
       return true;
     } else {
       this.snackBar.open(ERROR_GRADE_WITH_MIN_PROC_ALREADY_EXIST, DEFAULT_SNACK_BAR_ACTION_LABEL, { duration: DEFAULT_SNACK_BAR_DURATION });
+      return false;
+    }
+  }
+
+  private validateEditMinPercentageValue(gradeToCheck: Partial<GradeTSend>): boolean {
+    const sameMinPercentExist = this.gradeDataList().some((gradeListItem) =>
+      gradeListItem.id !== gradeToCheck.id && gradeListItem.minPercentage === gradeToCheck.minPercentage
+    );
+
+    if (!sameMinPercentExist) {
+      return true;
+    } else {
+      this.snackBar.open(ERROR_GRADE_WITH_MIN_PROC_ALREADY_EXIST, DEFAULT_SNACK_BAR_ACTION_LABEL, {
+        duration: DEFAULT_SNACK_BAR_DURATION,
+      });
       return false;
     }
   }
