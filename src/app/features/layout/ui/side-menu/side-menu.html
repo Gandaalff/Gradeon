@@ -1,0 +1,32 @@
+<div
+  class="side-menu-container"
+  [ngClass]="{ collapsed: menuCollapseService.isMenuCollapsed() }">
+  <mat-drawer-container
+    class="mat-drawer-container"
+    [ngClass]="{ collapsed: menuCollapseService.isMenuCollapsed() }">
+    <mat-drawer mode="side" opened>
+      <div class="menu">
+        <ws-logo
+          [logoType]="
+            menuCollapseService.isMenuCollapsed()
+              ? logoTypeEnum.BRAND_LOGO
+              : logoTypeEnum.BRAND_NAME
+          "></ws-logo>
+        <mat-nav-list>
+          @for (menu of menuConfig; track menu.name) {
+            <mat-list-item
+              [activated]="menu.path === activatedRoute()"
+              [routerLink]="menu.path">
+              <div class="menu-item">
+                <mat-icon>{{ menu.icon }}</mat-icon>
+                @if (!menuCollapseService.isMenuCollapsed()) {
+                  <span>{{ menu.name }}</span>
+                }
+              </div>
+            </mat-list-item>
+          }
+        </mat-nav-list>
+      </div>
+    </mat-drawer>
+  </mat-drawer-container>
+</div>

@@ -1,0 +1,30 @@
+<div
+  class="side-menu-container"
+  [ngClass]="{ collapsed: menuCollapseService.isMenuCollapsed() }">
+  <mat-drawer-container class="mat-drawer-container">
+    <mat-drawer mode="over" opened>
+      <div class="menu">
+        <ws-logo [logoType]="logoTypeEnum.BRAND_NAME"></ws-logo>
+        <mat-nav-list>
+          @for (menu of menuConfig; track menu.name) {
+            <mat-list-item
+              [activated]="menu.path === activatedRoute()"
+              [routerLink]="menu.path">
+              <div class="menu-item">
+                <mat-icon>{{ menu.icon }}</mat-icon>
+                <span>{{ menu.name }}</span>
+              </div>
+            </mat-list-item>
+          }
+        </mat-nav-list>
+      </div>
+      <div class="button-container">
+        <button
+          matMiniFab
+          (click)="menuCollapseService.isMenuCollapsed.set(true)">
+          <mat-icon>arrow_back</mat-icon>
+        </button>
+      </div>
+    </mat-drawer>
+  </mat-drawer-container>
+</div>

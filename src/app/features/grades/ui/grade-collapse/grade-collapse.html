@@ -1,0 +1,20 @@
+<div class="grade-collapse-container">
+  <mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title> {{ gradeData().symbolicGrade }} </mat-panel-title>
+        <mat-panel-description>
+          {{ gradeData().minPercentage }}% - {{ gradeData().maxPercentage }}%
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <pr-grade-form
+        [gradeForm]="gradeForm"
+        (save)="editGrade()"></pr-grade-form>
+    </mat-expansion-panel>
+  </mat-accordion>
+  <div class="delete-icon-container">
+    <button matIconButton (click)="deleteGrade()">
+      <mat-icon>delete</mat-icon>
+    </button>
+  </div>
+</div>

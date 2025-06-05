@@ -1,0 +1,15 @@
+<mat-toolbar class="toolbar">
+  <button matIconButton (click)="collapseMenu()">
+    <mat-icon>{{
+      menuCollapseService.isMenuCollapsed() ? 'menu' : 'more_vert'
+    }}</mat-icon>
+  </button>
+  <span class="spacer"></span>
+  <button matIconButton [matMenuTriggerFor]="menu">
+    <mat-icon>account_circle</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu" xPosition="before">
+    <button mat-menu-item>User settings</button>
+    <button mat-menu-item>Logout</button>
+  </mat-menu>
+</mat-toolbar>
